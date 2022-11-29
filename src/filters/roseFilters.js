@@ -4,7 +4,6 @@ module.exports.RoseFilter = class RoseFilter {
     if (message.match(buySetup)) return true;
     return false;
   };
-
   static filter = (message) => {
     const isHavingBuySignal = RoseFilter.buyFilter(message);
     // can check more fitlers heres

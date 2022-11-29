@@ -8,7 +8,6 @@ const apiId = 11972427;
 const apiHash = "3f7625db2e3cb625d3f2879cd70c7023";
 
 (async () => {
-  console.log("Loading interactive example...");
   const client = new TelegramClient(
     "/src/sessions/auth.session",
     apiId,
@@ -40,11 +39,11 @@ const apiHash = "3f7625db2e3cb625d3f2879cd70c7023";
     //     m.push(messages[i].message);
     //   }
     // }
-    const m = messages;
 
+    const m = messages;
     m.map(async (message) => {
-      const containsBuyFilter = RoseFilter.filter(message);
-      if (containsBuyFilter) {
+      const isContainingBuySignal = RoseFilter.filter(message);
+      if (isContainingBuySignal) {
         console.log(message);
         // await client.invoke( //   new Api.messages.SendMessage({
         //     peer: "test3am",
