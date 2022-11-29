@@ -7,6 +7,7 @@ module.exports.RoseFilter = class RoseFilter {
 
   static filter = (message) => {
     const isHavingBuySignal = RoseFilter.buyFilter(message);
+    // can check more fitlers heres
     if (isHavingBuySignal) return true;
     return false;
   };
