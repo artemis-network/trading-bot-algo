@@ -20,8 +20,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "nodemon ./src/index.js",
-    "dev": "nodemon ./src/index.js"
+    "start": "nodee ./src/index.js",
+    "dev": "node ./src/index.js"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.2",
