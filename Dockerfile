@@ -7,7 +7,6 @@ COPY package.json ./
 RUN yarn install 
 
 COPY src ./src
-RUN yarn build
 
 EXPOSE 5000
 EXPOSE 587
