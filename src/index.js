@@ -4,14 +4,27 @@ const { Api } = require("telegram/tl");
 const fs = require("fs");
 const { RoseFilter } = require("./filters/roseFilters");
 const path = require("path");
+const axios = require("axios");
 
 const apiId = 11972427;
 const apiHash = "3f7625db2e3cb625d3f2879cd70c7023";
 
+const { PerformanceObserver, performance } = require("node:perf_hooks");
+const obs = new PerformanceObserver((items) => {
+  // console.log(items.getEntries()[1].duration - items.getEntries()[0].duration) +
+  //   "ms";
+  console.log(items);
+  performance.clearMarks();
+});
+
 const main = async () => {
+  obs.observe({ type: "measure" });
+
+  performance.measure("Start to Now");
   try {
     // * uncomment this block while using with telegram
     // * creating telegram client session
+
     const client = new TelegramClient(
       "/src/sessions/auth.session",
       apiId,
@@ -32,7 +45,7 @@ const main = async () => {
     // * getting chat history of channel
     const history = await client.invoke(
       new Api.messages.GetHistory({
-        peer: "artemistest1",
+        peer: "RoseSignalsPremium",
         limit: 5,
       })
     );
@@ -76,13 +89,29 @@ const main = async () => {
       // * send messages to telegram channel
       for (let i = 0; i < newMessages.length; i++) {
         console.log(newMessages[i]);
+
+        const coin = RoseFilter.extractCoin(newMessages[i]);
+        const message = `
+        coin   : ${coin}
+        signal : buy 
+        `;
         const result = await client.invoke(
           new Api.messages.SendMessage({
-            peer: "artemistest2",
-            message: newMessages[i],
+            peer: "artemistest101",
+            message: message,
           })
         );
-        console.log(result);
+        // await axios
+        //   .post("http://localhost:5500/trade-bot/api/v1/bots/execute", {
+        //     coin: coin.replace("#", "") + "USDT",
+        //     botId: "638ddbd493ae01623b307dc7",
+        //   })
+        //   .then((res) => {
+        //     performance.measure("Ends Now");
+        //   })
+        //   .catch((err) => {
+        //     performance.measure("Ends Now");
+        //   });
       }
 
       // * if contains new messages overrwrite messages.json

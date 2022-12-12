@@ -1,12 +1,14 @@
 {
-  "name": "trading-bot-filters",
+  "name": "trading-bot-algo",
   "version": "1.0.0",
   "main": "index.ts",
   "author": "akash madduru",
   "license": "MIT",
   "dependencies": {
+    "@types/axios": "^0.14.0",
     "@types/node": "^18.7.18",
     "@types/prompts": "^2.4.1",
+    "axios": "^1.2.0",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.2",
@@ -18,7 +20,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "node ./bin/index.js",
+    "start": "nodemon ./src/index.js",
     "dev": "nodemon ./src/index.js"
   },
   "devDependencies": {

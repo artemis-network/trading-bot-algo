@@ -10,4 +10,11 @@ module.exports.RoseFilter = class RoseFilter {
     if (isHavingBuySignal) return true;
     return false;
   };
+
+  static extractCoin = (message) => {
+    const words = message.split(" ");
+    const coin = words[0];
+    coin.replace("#", "");
+    return coin;
+  };
 };
