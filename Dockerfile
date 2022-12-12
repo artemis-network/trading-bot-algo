@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY tsconfig.json ./
 COPY package.json ./
-ENV GENERATE_SOURCEMAP=false
 
 RUN yarn install 
 
