@@ -14,4 +14,4 @@ RUN yarn build
 EXPOSE 5000
 EXPOSE 587
 
-CMD ["yarn", "start"]
+CMD ["yarn", "run", "dev"]
