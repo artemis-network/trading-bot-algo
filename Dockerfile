@@ -2,7 +2,6 @@ FROM node:16
 
 WORKDIR /app
 
-COPY tsconfig.json ./
 COPY package.json ./
 
 RUN yarn install 
