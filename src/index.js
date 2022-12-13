@@ -41,6 +41,15 @@ const main = async () => {
     });
     await client.connect();
 
+    setInterval(async () => {
+      const result = await client.invoke(
+        new Api.messages.SendMessage({
+          peer: "artemistest101",
+          message: "ping",
+        })
+      );
+    }, 1000 * 60);
+
     // * getting chat history of channel
     setInterval(async () => {
       console.log("ping");
