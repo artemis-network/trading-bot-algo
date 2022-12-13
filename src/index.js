@@ -50,9 +50,8 @@ const main = async () => {
       );
     }, 1000 * 60);
 
-    // * getting chat history of channel
     setInterval(async () => {
-      console.log("ping");
+      // * getting chat history of channel
       const history = await client.invoke(
         new Api.messages.GetHistory({
           peer: "RoseSignalsPremium",
